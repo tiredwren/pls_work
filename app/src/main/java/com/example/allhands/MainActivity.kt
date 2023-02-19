@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 class MainActivity : AppCompatActivity(), ItemsAdapter.ClickListener {
 
     val itemNameImage = arrayOf(
-            ItemsModal("conversation","me when i grow up",R.drawable.converse),
+            ItemsModal("converse","me when i grow up",R.drawable.converse),
             ItemsModal("couple cats","my cats when i grow up",R.drawable.couple_cats),
             ItemsModal("kissing cats","my relationship when i grow up",R.drawable.kissing_cats),
             ItemsModal("tea","my desk when i grow up",R.drawable.tea),
