@@ -14,11 +14,18 @@
         android:theme="@style/Theme.Allhands"
         tools:targetApi="31">
         <activity
+            android:name=".HomeActivity"
+            android:exported="false" />
+        <activity
             android:name=".ConverseActivity"
             android:exported="false" />
         <activity
             android:name=".KissingCatsActivity"
             android:exported="false" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

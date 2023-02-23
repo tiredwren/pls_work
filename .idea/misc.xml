@@ -3,8 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/moudsne26/AndroidStudioProjects/allhands/app/src/main/res/drawable/rounded_corners.xml" value="0.1" />
         <entry key="..\:/Users/moudsne26/AndroidStudioProjects/allhands/app/src/main/res/layout/actiity_kissing_cats.xml" value="0.19010416666666666" />
         <entry key="..\:/Users/moudsne26/AndroidStudioProjects/allhands/app/src/main/res/layout/activity_converse.xml" value="0.19010416666666666" />
+        <entry key="..\:/Users/moudsne26/AndroidStudioProjects/allhands/app/src/main/res/layout/activity_home.xml" value="0.25" />
         <entry key="..\:/Users/moudsne26/AndroidStudioProjects/allhands/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/moudsne26/AndroidStudioProjects/allhands/app/src/main/res/layout/row_items.xml" value="0.25" />
         <entry key="..\:/Users/moudsne26/AndroidStudioProjects/allhands/app/src/main/res/menu/menu.xml" value="0.25" />
