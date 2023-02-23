@@ -2,12 +2,9 @@ package com.example.allhands
 
 import androidx.appcompat.app.AppCompatActivity
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
-import android.view.MenuItem
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity(), ItemsAdapter.ClickListener {
 
-    val itemNameImage = arrayOf(
+    val searchItems = arrayOf(
             ItemsModal("converse","me when i grow up",R.drawable.converse),
             ItemsModal("couple cats","my cats when i grow up",R.drawable.couple_cats),
             ItemsModal("kissing cats","my relationship when i grow up",R.drawable.kissing_cats),
@@ -31,7 +28,7 @@ class MainActivity : AppCompatActivity(), ItemsAdapter.ClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        for(items in itemNameImage){
+        for(items in searchItems){
             itemModalList.add(items)
         }
         itemsAdapter = ItemsAdapter(this)

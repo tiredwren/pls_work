@@ -15,7 +15,11 @@ class HomeActivity : AppCompatActivity() {
             val Intent = Intent(this, MainActivity::class.java)
             startActivity(Intent)
 
-        /* dont forget to link "in person" button to MapActivity once you have it!*/
+        val inPersonButton = findViewById<Button>(R.id.in_person)
+        onlineButton.setOnClickListener {
+            val Intent2 = Intent(this, MapsActivity::class.java)
+            startActivity(Intent2) }
+
         }
     }
 
