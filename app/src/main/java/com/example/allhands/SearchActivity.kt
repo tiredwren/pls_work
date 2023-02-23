@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity(), ItemsAdapter.ClickListener {
 
     val itemModalList = ArrayList<ItemsModal>()
 
-    var itemsAdapter: ItemsAdapter? = null;
+    var itemsAdapter: ItemsAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,12 +34,12 @@ class MainActivity : AppCompatActivity(), ItemsAdapter.ClickListener {
         for(items in itemNameImage){
             itemModalList.add(items)
         }
-        itemsAdapter = ItemsAdapter(this);
+        itemsAdapter = ItemsAdapter(this)
         itemsAdapter!!.setData(itemModalList)
 
-        this.findViewById<RecyclerView>(R.id.recyclerView).layoutManager = LinearLayoutManager(this);
+        this.findViewById<RecyclerView>(R.id.recyclerView).layoutManager = LinearLayoutManager(this)
         findViewById<RecyclerView>(R.id.recyclerView).setHasFixedSize(true)
-        findViewById<RecyclerView>(R.id.recyclerView).adapter = itemsAdapter;
+        findViewById<RecyclerView>(R.id.recyclerView).adapter = itemsAdapter
     }
 
     override fun ClickedItem(itemsModal: ItemsModal) {
