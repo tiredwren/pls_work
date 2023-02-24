@@ -1,81 +1,64 @@
 package com.example.allhands
 
-import androidx.appcompat.app.AppCompatActivity
 import android.content.Intent
+import android.net.wifi.hotspot2.pps.HomeSp
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.Menu
-import android.widget.Toast
-import androidx.appcompat.widget.SearchView
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import android.view.MenuItem
+import android.widget.Button
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.drawerlayout.widget.DrawerLayout
+import com.google.android.material.navigation.NavigationView
 
-class MainActivity : AppCompatActivity(), ItemsAdapter.ClickListener {
+class MainActivity : AppCompatActivity() {
 
-    val searchItems = arrayOf(
-            ItemsModal("converse","me when i grow up",R.drawable.converse),
-            ItemsModal("couple cats","my cats when i grow up",R.drawable.couple_cats),
-            ItemsModal("kissing cats","my relationship when i grow up",R.drawable.kissing_cats),
-            ItemsModal("tea","my desk when i grow up",R.drawable.tea),
-            ItemsModal("reading","my study space when i grow up",R.drawable.reading),
-    )
-
-    val itemModalList = ArrayList<ItemsModal>()
-
-    var itemsAdapter: ItemsAdapter? = null
+    lateinit var toggle : ActionBarDrawerToggle
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        for(items in searchItems){
-            itemModalList.add(items)
+
+        val drawerLayout : DrawerLayout = findViewById(R.id.drawerLayout)
+        val navView : NavigationView = findViewById(R.id.nav_view)
+
+        toggle = ActionBarDrawerToggle(this, drawerLayout,R.string.open,R.string.close)
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        navView.setNavigationItemSelectedListener {
+
+            when(it.itemId){
+                R.id.search -> startActivity(Intent(this@MainActivity,SearchActivity::class.java))
+                R.id.home -> startActivity(Intent(this@MainActivity,MainActivity::class.java))
+                R.id.map -> startActivity(Intent(this@MainActivity,MapsActivity::class.java))
+            }
+            true
         }
-        itemsAdapter = ItemsAdapter(this)
-        itemsAdapter!!.setData(itemModalList)
 
-        this.findViewById<RecyclerView>(R.id.recyclerView).layoutManager = LinearLayoutManager(this)
-        findViewById<RecyclerView>(R.id.recyclerView).setHasFixedSize(true)
-        findViewById<RecyclerView>(R.id.recyclerView).adapter = itemsAdapter
-    }
 
-    override fun ClickedItem(itemsModal: ItemsModal) {
-        Log.e("TAG",itemsModal.name)
+        val onlineButton = findViewById<Button>(R.id.online)
+        onlineButton.setOnClickListener {
+            val Intent = Intent(this, SearchActivity::class.java)
+            startActivity(Intent)
 
-        when(itemsModal.name){
-            "converse" ->
-                startActivity(Intent(this@MainActivity, ConverseActivity::class.java))
-            "kissing_cats" ->
-                startActivity(Intent(this@MainActivity, KissingCatsActivity::class.java))
+        val inPersonButton = findViewById<Button>(R.id.in_person)
+        onlineButton.setOnClickListener {
+            val Intent2 = Intent(this, MapsActivity::class.java)
+            startActivity(Intent2) }
 
-            else -> {
-                Toast.makeText(this,"no action yet", Toast.LENGTH_LONG).show()
-            }
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu, menu)
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
-        val menuItem = menu!!.findItem(R.id.searchView)
+        if (toggle.onOptionsItemSelected(item))
 
-        val searchView = menuItem.actionView as SearchView
+            return true
 
-        searchView.maxWidth = Int.MAX_VALUE
-
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
-            override fun onQueryTextSubmit(filterString: String?): Boolean {
-                itemsAdapter!!.filter.filter(filterString)
-                return true
-            }
-
-            override fun onQueryTextChange(filterString: String?): Boolean {
-
-                itemsAdapter!!.filter.filter(filterString)
-                return true
-            }
-
-        })
-        return true
+        return super.onOptionsItemSelected(item)
     }
+
+
 }
