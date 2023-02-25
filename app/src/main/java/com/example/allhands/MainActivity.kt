@@ -40,15 +40,13 @@ class MainActivity : AppCompatActivity() {
 
         val onlineButton = findViewById<Button>(R.id.online)
         onlineButton.setOnClickListener {
-            val Intent = Intent(this, SearchActivity::class.java)
-            startActivity(Intent)
+            startActivity(Intent(this@MainActivity, SearchActivity::class.java))}
 
         val inPersonButton = findViewById<Button>(R.id.in_person)
-        onlineButton.setOnClickListener {
-            val Intent2 = Intent(this, MapsActivity::class.java)
-            startActivity(Intent2) }
+        inPersonButton.setOnClickListener {
+            startActivity(Intent(this@MainActivity, MapsActivity::class.java))}
 
-        }
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
